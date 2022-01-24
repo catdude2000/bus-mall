@@ -2,6 +2,16 @@
 
 console.log('js file is connected');
 
+// Create global variables.
+
+let imageElements = document.getElementsByTagName('img');
+console.log('image elements', imageElements);
+
+let productIndex1 = 0;
+let productIndex2 = 1;
+let productIndex3 = 2;
+let rounds = 25;
+let allProducts = [];
 
 function Product(name, filePath, timesShown){
   this.name = name;
