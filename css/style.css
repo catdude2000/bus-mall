@@ -1,0 +1,33 @@
+
+body {
+    width: auto;
+    margin: 0 auto;
+    background-color: rgb(225, 226, 158);
+}
+header{
+    text-align: center;
+    font-size: 50px;
+}
+h2{
+    font-size: 35px;
+} 
+h1{
+    color: rgb(255, 0, 85);
+    font-size: 40px;
+}
+main{
+    text-align: center;
+    background-color: rgb(58, 60, 189);
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    overflow: hidden;
+}
+img{
+    margin-top: 75px;
+    height: 300px;
+    width: 300px;
+}
+h1{
+    color: rgb(229, 255, 0);
+    font-size: 40px;
+}
