@@ -25,7 +25,6 @@ function Product(name, filePath, timesClicked, timesShown){
     this.timesShown = 0;
   }
   allProducts.push(this);
-  
 }
 console.log('allproducts', allProducts);
 
@@ -60,76 +59,76 @@ function imageWasClicked(event){
   totalClicks++;
 
   if(event.srcElement.id === '1'){
-      allProducts[productIndex1].timesClicked++;
-  }   else if(event.srcElement.id === '2'){
-      allProducts[productIndex2].timesClicked++;
-  }   else if(event.srcElement.id === '3'){
-      allProducts[productIndex3].timesClicked++;
+    allProducts[productIndex1].timesClicked++;
+  } else if(event.srcElement.id === '2'){
+    allProducts[productIndex2].timesClicked++;
+  } else if(event.srcElement.id === '3'){
+    allProducts[productIndex3].timesClicked++;
   }
 
-let nextProductIndex1 = Math.floor(Math.random() * allProducts.length);
-let nextProductIndex2 = Math.floor(Math.random() * allProducts.length);
-let nextProductIndex3 = Math.floor(Math.random() * allProducts.length);
+  let nextProductIndex1 = Math.floor(Math.random() * allProducts.length);
+  let nextProductIndex2 = Math.floor(Math.random() * allProducts.length);
+  let nextProductIndex3 = Math.floor(Math.random() * allProducts.length);
 
-console.log('next product index one is from random ', nextProductIndex1);
+  console.log('next product index one is from random ', nextProductIndex1);
 
-while(
-  (nextProductIndex1 === productIndex1) || (nextProductIndex1 === productIndex2) || (nextProductIndex1 === productIndex3) || (nextProductIndex1 === nextProductIndex2) || (nextProductIndex1 === nextProductIndex3)){
-  nextProductIndex1 = Math.floor(Math.random() * allProducts.length)
-}
-while(
-  (nextProductIndex2 === productIndex1) || (nextProductIndex2 === productIndex2) || (nextProductIndex2 === productIndex3) || (nextProductIndex2 === nextProductIndex1) || (nextProductIndex2 === nextProductIndex3)){
-  nextProductIndex2 = Math.floor(Math.random() * allProducts.length)
-}
-while(
-  (nextProductIndex3 === productIndex1) || (nextProductIndex3 === productIndex2) || (nextProductIndex3 === productIndex3) || (nextProductIndex3 === nextProductIndex1) || (nextProductIndex3 === nextProductIndex2)){
-  nextProductIndex3 = Math.floor(Math.random() * allProducts.length);
-}
+  while(
+    (nextProductIndex1 === productIndex1) || (nextProductIndex1 === productIndex2) || (nextProductIndex1 === productIndex3) || (nextProductIndex1 === nextProductIndex2) || (nextProductIndex1 === nextProductIndex3)){
+    nextProductIndex1 = Math.floor(Math.random() * allProducts.length);
+  }
+  while(
+    (nextProductIndex2 === productIndex1) || (nextProductIndex2 === productIndex2) || (nextProductIndex2 === productIndex3) || (nextProductIndex2 === nextProductIndex1) || (nextProductIndex2 === nextProductIndex3)){
+    nextProductIndex2 = Math.floor(Math.random() * allProducts.length);
+  }
+  while(
+    (nextProductIndex3 === productIndex1) || (nextProductIndex3 === productIndex2) || (nextProductIndex3 === productIndex3) || (nextProductIndex3 === nextProductIndex1) || (nextProductIndex3 === nextProductIndex2)){
+    nextProductIndex3 = Math.floor(Math.random() * allProducts.length);
+  }
 
-productIndex1 = nextProductIndex1;
-productIndex2 = nextProductIndex2;
-productIndex3 = nextProductIndex3;
-console.log('now the product Index at 1 after new assignment', productIndex1);
+  productIndex1 = nextProductIndex1;
+  productIndex2 = nextProductIndex2;
+  productIndex3 = nextProductIndex3;
+  console.log('now the product Index at 1 after new assignment', productIndex1);
 
-// Create times shown concanation
+  // Create times shown concanation
 
-imageElements[0].src = allProducts[productIndex1].imgsrc;
-allProducts[productIndex1].timesShown++;
+  imageElements[0].src = allProducts[productIndex1].imgsrc;
+  allProducts[productIndex1].timesShown++;
 
-imageElements[1].src = allProducts[productIndex2].imgsrc;
-allProducts[productIndex2].timesShown++;
+  imageElements[1].src = allProducts[productIndex2].imgsrc;
+  allProducts[productIndex2].timesShown++;
 
-imageElements[2].src = allProducts[productIndex3].imgsrc;
-allProducts[productIndex3].timesShown++;
+  imageElements[2].src = allProducts[productIndex3].imgsrc;
+  allProducts[productIndex3].timesShown++;
 
-if(totalClicks >= rounds){
+  if(totalClicks >= rounds){
     localStorage.setItem('savedVotes', JSON.stringify(allProducts));
-  
+
     let asideUL = document.getElementById('Picks');
 
     // Create pick text/data
 
     for(let i = 0; i < allProducts.length; i ++){
       let picksListItem = document.createElement('li');
-      picksListItem.textContent =   `${allProducts[i].pname} was clicked on ${allProducts[i].timesClicked} times and was shown ${allProducts[i].timesShown} times `;
+      picksListItem.textContent = `${allProducts[i].pname} was clicked on ${allProducts[i].timesClicked} times and was shown ${allProducts[i].timesShown} times `;
       asideUL.appendChild(picksListItem);
 
       let percentageListItem = document.createElement('li');
       let math;
       if(allProducts[i].timesClicked === 0){
-          math = `zero clicks and shown ${allProducts[i].timesShown} times. We'll work on it!.`;
-          console.log('math', math)
+        math = `zero clicks and shown ${allProducts[i].timesShown} times. We'll work on it!.`;
+        console.log('math', math);
       } else {
-          math = Math.round(((allProducts[i]['timesClicked']/ allProducts[i]['timesShown']).toFixed(2) * 100)) + '%';
+        math = Math.round(((allProducts[i]['timesClicked']/ allProducts[i]['timesShown']).toFixed(2) * 100)) + '%';
       }
       percentageListItem.textContent = `${allProducts[i].pname} percentage of times clicked on vs times shown is ` + math;
       asideUL.appendChild(percentageListItem);
-  }
+    }
 
-  for(let i = 0; i < imageElements.length; i++){
+    for(let i = 0; i < imageElements.length; i++){
       imageElements[i].removeEventListener('click', imageWasClicked);
       console.log('Hello there!');
+    }
+
   }
-  runMyChartsNow();
-}
 }
