@@ -13,11 +13,21 @@ let productIndex3 = 2;
 let rounds = 25;
 let allProducts = [];
 
-function Product(name, filePath, timesShown){
+function Product(name, filePath, timesClicked, timesShown){
   this.name = name;
   this.filePath = filePath;
-  this.timesShown = timesShown;
+  if(timesClicked) {
+    this.timesClicked = timesClicked;
+  } else {
+    this.timesClicked = 0;
+  }
+  if(timesShown) {
+    this.timesShown = 0;
+  }
+  allProducts.push(this);
+  
 }
+console.log('allproducts', allProducts);
 
 new Product('bag', 'img/bag.jpg');
 new Product('banana', 'img/banana.jpg');
