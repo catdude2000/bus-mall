@@ -155,3 +155,6 @@ function getResults (){
     results.innerHTML = 'Wine-glass had ' + Product.allImages[18].clicks + ' votes, and was seen ' + Product.allImages[18].timesShown + ' times.';
 }
 
+//faster way to do above(for loop?)?
+
+//how to center images?
