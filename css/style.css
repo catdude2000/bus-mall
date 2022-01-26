@@ -41,3 +41,9 @@ section{
     display: flex;
     margin-left: 130px;
 }
+h3{
+    padding-top: 50px;
+    font-size: x-large;
+    text-align: center;
+    color: violet;
+}

@@ -113,6 +113,8 @@ pickNewProducts();
 console.log('bagclicks', Product.allImages[0].clicks)
 
 function getResults (){
+    var results = document.getElementById('resultsTitle');
+    results.innerHTML = 'Results';
     var results = document.getElementById('bag');
     results.innerHTML = 'Bag had ' + Product.allImages[0].clicks + ' votes, and was seen ' + Product.allImages[0].timesShown + ' times.';
     var results = document.getElementById('banana');
