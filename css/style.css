@@ -1,6 +1,7 @@
 
 body {
-    width: auto;
+    /* display: block; */
+    /* width: auto; */
     margin: 0 auto;
     background-color: rgb(225, 226, 158);
 }
@@ -9,25 +10,34 @@ header{
     font-size: 50px;
 }
 h2{
-    font-size: 35px;
+    font-size: 40px;
 } 
 h1{
+    text-align: center;
     color: rgb(255, 0, 85);
     font-size: 40px;
 }
-main{
-    text-align: center;
-    background-color: rgb(58, 60, 189);
-    padding-bottom: 25px;
-    margin-bottom: 25px;
-    overflow: hidden;
-}
+
 img{
     margin-top: 75px;
+    margin-left: 40px;
+    margin-bottom: 100px;
     height: 300px;
     width: 300px;
 }
-h1{
-    color: rgb(229, 255, 0);
-    font-size: 40px;
+button{
+    width: 900px;
+    height: 200px;
+    font-size: 90px;
+    background-color: red;
+    color: white;
+    margin-left: 210px;
+}
+ul{
+    text-align: center;
+    font-size: x-large;
+}
+section{
+    display: flex;
+    margin-left: 130px;
 }
