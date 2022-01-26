@@ -109,3 +109,47 @@ centerProductOnPage = Product.allImages[1];
 rightProductOnPage = Product.allImages[2];
 
 pickNewProducts();
+
+console.log('bagclicks', Product.allImages[0].clicks)
+
+function getResults (){
+    var results = document.getElementById('bag');
+    results.innerHTML = 'Bag had ' + Product.allImages[0].clicks + ' votes, and was seen ' + Product.allImages[0].timesShown + ' times.';
+    var results = document.getElementById('banana');
+    results.innerHTML = 'Banana had ' + Product.allImages[1].clicks + ' votes, and was seen ' + Product.allImages[1].timesShown + ' times.';
+    var results = document.getElementById('bathroom');
+    results.innerHTML = 'Bathroom had ' + Product.allImages[2].clicks + ' votes, and was seen ' + Product.allImages[2].timesShown + ' times.';
+    var results = document.getElementById('boots');
+    results.innerHTML = 'Boots had ' + Product.allImages[3].clicks + ' votes, and was seen ' + Product.allImages[3].timesShown + ' times.';
+    var results = document.getElementById('breakfast');
+    results.innerHTML = 'Breakfast had ' + Product.allImages[4].clicks + ' votes, and was seen ' + Product.allImages[4].timesShown + ' times.';
+    var results = document.getElementById('bubblegum');
+    results.innerHTML = 'Bubblegum had ' + Product.allImages[5].clicks + ' votes, and was seen ' + Product.allImages[5].timesShown + ' times.';
+    var results = document.getElementById('chair');
+    results.innerHTML = 'Chair had ' + Product.allImages[6].clicks + ' votes, and was seen ' + Product.allImages[6].timesShown + ' times.';
+    var results = document.getElementById('cthulu');
+    results.innerHTML = 'Cthulu had ' + Product.allImages[7].clicks + ' votes, and was seen ' + Product.allImages[7].timesShown + ' times.';
+    var results = document.getElementById('dog-duck');
+    results.innerHTML = 'Dog-duck had ' + Product.allImages[8].clicks + ' votes, and was seen ' + Product.allImages[8].timesShown + ' times.';
+    var results = document.getElementById('dragon');
+    results.innerHTML = 'Dragon had ' + Product.allImages[9].clicks + ' votes, and was seen ' + Product.allImages[9].timesShown + ' times.';
+    var results = document.getElementById('pen');
+    results.innerHTML = 'Pen had ' + Product.allImages[10].clicks + ' votes, and was seen ' + Product.allImages[9].timesShown + ' times.';
+    var results = document.getElementById('pet-sweep');
+    results.innerHTML = 'Pet-sweep had ' + Product.allImages[11].clicks + ' votes, and was seen ' + Product.allImages[11].timesShown + ' times.';
+    var results = document.getElementById('scissors');
+    results.innerHTML = 'Scissors had ' + Product.allImages[12].clicks + ' votes, and was seen ' + Product.allImages[12].timesShown + ' times.';
+    var results = document.getElementById('shark');
+    results.innerHTML = 'Shark had ' + Product.allImages[13].clicks + ' votes, and was seen ' + Product.allImages[13].timesShown + ' times.'  ;
+    var results = document.getElementById('sweep');
+    results.innerHTML = 'Sweep had ' + Product.allImages[14].clicks + ' votes, and was seen ' + Product.allImages[14].timesShown + ' times.';
+    var results = document.getElementById('tauntaun');
+    results.innerHTML = 'Tauntaun had ' + Product.allImages[15].clicks + ' votes, and was seen ' + Product.allImages[15].timesShown + ' times.';
+    var results = document.getElementById('unicorn');
+    results.innerHTML = 'Unicorn had ' + Product.allImages[16].clicks + ' votes, and was seen ' + Product.allImages[16].timesShown + ' times.';
+    var results = document.getElementById('water-can');
+    results.innerHTML = 'Water-can had ' + Product.allImages[17].clicks + ' votes, and was seen ' + Product.allImages[17].timesShown + ' times.';
+    var results = document.getElementById('wine-glass');
+    results.innerHTML = 'Wine-glass had ' + Product.allImages[18].clicks + ' votes, and was seen ' + Product.allImages[18].timesShown + ' times.';
+}
+
