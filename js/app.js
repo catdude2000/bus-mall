@@ -66,6 +66,7 @@ const handleClick = function(event){
     tempPickedProducts.includes(allImages[rightImg])
   );
   tempPickedProducts.push(allImages[rightImg]);
+
   let centerImg;
   do{
     centerImg = Math.floor(Math.random() * allImages.length);
@@ -96,14 +97,14 @@ const handleClick = function(event){
 
 function handleResultsList(){
   console.log('reultswasclicked');
-  document.getElementById('results').style.background = 'yellow';
+  document.getElementById('results').style.background = 'blue';
 
   let ul = document.getElementById('results');
   ul.innerHTML = '';
   for(let i = 0; i < allImages.length; i++){
     let current = allImages[i];
     let li = document.createElement('li');
-    li.textcontent = current.name + ' got ' + current.clicks + ' votes.';
+    li.textcontent = current.pName + ' got ' + current.clicks + ' votes.';
     ul.appendChild(li);
   }
 }

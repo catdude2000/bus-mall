@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/reset.css">
         <link rel="stylesheet" href="css/style.css">
-        <!-- <link rel="stylesheet" href="styles/grid.css"> -->
+        <link rel="stylesheet" href="css/grid.css">
     </head>
     <body>
         <header>
@@ -16,13 +16,11 @@
         </header>
         <h1>Bus Mall, how could you not?</h1>
         <h3>Help us by clicking on what you like, and we'll show you more products each time you do!</h3>
-        <div>
-         <!-- class="grid"> -->
-            <section>
-             <!-- class="row-full column-a"> -->
+        <div class="grid">
+            <section id="resultshtml" class="row-full column-a">
                 <ul id="results">
-                    <!-- <h2 id="resultsTitle"></h2> -->
-                    <!-- <li id="bag"></li>
+                    <!-- <h2 id="resultsTitle">Results</h2>
+                    <li id="bag"></li>
                     <li id="banana"></li>
                     <li id="bathroom"></li>
                     <li id="boots"></li>
@@ -40,14 +38,14 @@
                     <li id="tauntaun"></li>
                     <li id="unicorn"></li>
                     <li id="water-can"></li>
-                    <li id="wine-glass"></li> -->
-                    <li></li>
+                    <li id="wine-glass"></li>
+                    <li>ertergreferg</li> -->
                     <li></li>
                     <li></li>
                 </ul>
             </section>
 
-            <section id="all_products">
+            <section id="all_products" class="row-full column-b flexFloat">
                 <div id="left_product">
                     <img id="left_img" src="img/bag.jpg" />
                 </div>                
@@ -59,10 +57,10 @@
                 </div>
                 <canvas id="myChart" width="500" height="500"></canvas>
             </section>
-
+        <div class="column-c">
             <button type="button" id="resultsList" onclick="handleResultsList()">View Results</button>
             <button type="button" id="chartResults" onclick="handleChartResults()">View Chart</button>
-
+        </div>
 
             <!-- <div>
                 <canvas id="myChart"></canvas>
