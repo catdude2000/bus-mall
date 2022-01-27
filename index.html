@@ -8,13 +8,40 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/reset.css">
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="styles/grid.css">
     </head>
     <body>
-       <header>
+        <header>
            Bus Mall?---Bus Mall!---Bus Mall?---Bus Mall!
-       </header>
-            <h1>Bus Mall, how could you not?</h1>
-            <h3>Help us by clicking on what you like, and we'll show you more products each time you do!</h3>
+        </header>
+        <h1>Bus Mall, how could you not?</h1>
+        <h3>Help us by clicking on what you like, and we'll show you more products each time you do!</h3>
+        <div class="grid">
+            <section class="row-full column-a">
+                <ul id="results">
+                    <h2 id="resultsTitle"></h2>
+                    <li id="bag"></li>
+                    <li id="banana"></li>
+                    <li id="bathroom"></li>
+                    <li id="boots"></li>
+                    <li id="breakfast"></li>
+                    <li id="bubblegum"></li>
+                    <li id="chair"></li>
+                    <li id="cthulu"></li>
+                    <li id="dog-duck"></li>
+                    <li id="dragon"></li>
+                    <li id="pen"></li>
+                    <li id="pet-sweep"></li>
+                    <li id="scissors"></li>
+                    <li id="shark"></li>
+                    <li id="sweep"></li>
+                    <li id="tauntaun"></li>
+                    <li id="unicorn"></li>
+                    <li id="water-can"></li>
+                    <li id="wine-glass"></li>
+                </ul>
+            </section>
+
             <section id="all_products">
                 <div id="left_product">
                     <img id="left_img" src="img/bag.jpg" />
@@ -24,37 +51,18 @@
                 </div>                
                 <div id="right_product">
                     <img id="right_img" src="img/bathroom.jpg" />
-                </div>                
+                </div>
+                <canvas id="myChart" width="500" height="500"></canvas>
             </section>
 
               <button type="button" id="resultsButton" onclick="getResults()">View Results</button>
 
-            <ul id="results">
-                <h2 id="resultsTitle"></h2>
-                <li id="bag"></li>
-                <li id="banana"></li>
-                <li id="bathroom"></li>
-                <li id="boots"></li>
-                <li id="breakfast"></li>
-                <li id="bubblegum"></li>
-                <li id="chair"></li>
-                <li id="cthulu"></li>
-                <li id="dog-duck"></li>
-                <li id="dragon"></li>
-                <li id="pen"></li>
-                <li id="pet-sweep"></li>
-                <li id="scissors"></li>
-                <li id="shark"></li>
-                <li id="sweep"></li>
-                <li id="tauntaun"></li>
-                <li id="unicorn"></li>
-                <li id="water-can"></li>
-                <li id="wine-glass"></li>
-            </ul>
+
 
             <div>
                 <canvas id="myChart"></canvas>
             </div>
+        </div>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>    
         <script src="js/app.js" async defer></script>
     </body>
