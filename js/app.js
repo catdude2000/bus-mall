@@ -9,7 +9,7 @@ let rightImgTag = document.getElementById('right_img');
 let centerImgTag = document.getElementById('center_img');
 let leftImgTag = document.getElementById('left_img');
 
-let chartResults = document.getElementById('chartResults');
+let chartResults = document.getElementById('myChart');
 let resultsList = document.getElementById('resultsList');
 
 let totalClicks = 0;
@@ -18,12 +18,13 @@ let leftProductOnPage = null;
 let centerProductOnPage = null;
 let rightProductOnPage = null;
 
-function Product(pName, imgPath){
+function Product(pName, imageSrc){
   this.pName = pName;
-  this.url = imgPath;
+  this.imageSrc = imageSrc;
   this.clicks = 0;
   this.timesShown = 0;
-  Product.allImages.push(this);
+  //need Product below?
+  allImages.push(this);
 }
 
 
@@ -37,10 +38,14 @@ const handleClick = function(event){
   if(event.target.id === 'left_img') {
     leftProductOnPage.clicks++;
   }
+  if(event.target.id === 'center_img') {
+    centerProductOnPage.clicks++;
+  }
   if(event.target.id === 'right_img') {
     rightProductOnPage.clicks++;
   }
   leftProductOnPage.timesShown++;
+  centerProductOnPage.timesShown++;
   rightProductOnPage.timesShown++;
 
   const tempPickedProducts = [];
@@ -48,7 +53,7 @@ const handleClick = function(event){
   do{
     leftImg = Math.floor(Math.random() * allImages.length);
   } while(
-    previouslyPickedProducts.include(allImages[leftImg]) ||
+    previouslyPickedProducts.includes(allImages[leftImg]) ||
     tempPickedProducts.includes(allImages[leftImg])
   );
   tempPickedProducts.push(allImages[leftImg]);
@@ -61,25 +66,35 @@ const handleClick = function(event){
     tempPickedProducts.includes(allImages[rightImg])
   );
   tempPickedProducts.push(allImages[rightImg]);
+  let centerImg;
+  do{
+    centerImg = Math.floor(Math.random() * allImages.length);
+  } while(
+    previouslyPickedProducts.includes(allImages[centerImg]) ||
+    tempPickedProducts.includes(allImages[centerImg])
+  );
+  tempPickedProducts.push(allImages[centerImg]);
 
   console.log(leftImg, rightImg);
   leftProductOnPage = allImages[leftImg];
+  centerProductOnPage = allImages[centerImg];
   rightProductOnPage = allImages[rightImg];
 
-  leftImgTag.src = leftProductOnPage.imgSrc;
-  centerImgTag.src = centerProductOnPage.imgSrc;
-  rightImgTag.src = rightProductOnPage.imgSrc;
+  leftImgTag.src = leftProductOnPage.imageSrc;
+  centerImgTag.src = centerProductOnPage.imageSrc;
+  rightImgTag.src = rightProductOnPage.imageSrc;
 
   previouslyPickedProducts = [];
   previouslyPickedProducts.push(allImages[leftImg]);
+  previouslyPickedProducts.push(allImages[centerImg]);
   previouslyPickedProducts.push(allImages[rightImg]);
+
   if(totalClicks === 25){
     imageSectionTag.removeEventListener('click', handleClick);
   }
 };
 
-
-function handleResultsList(event){
+function handleResultsList(){
   console.log('reultswasclicked');
   document.getElementById('results').style.background = 'yellow';
 
@@ -128,9 +143,9 @@ new Product('unicorn', 'img/unicorn.jpg', 0, 0);
 new Product('water-can', 'img/water-can.jpg', 0, 0);
 new Product('wine-glass', 'img/wine-glass.jpg', 0, 0);
 
-leftProductOnPage = Product.allImages[0];
-centerProductOnPage = Product.allImages[1];
-rightProductOnPage = Product.allImages[2];
+leftProductOnPage = allImages[0];
+centerProductOnPage = allImages[1];
+rightProductOnPage = allImages[2];
 
 
 function makeAProductChart(){
