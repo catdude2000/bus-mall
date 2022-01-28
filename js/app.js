@@ -155,7 +155,7 @@ function makeAProductChart(){
   const productClicksArray = [];
 
   for(let i = 0; i < allImages.length; i++){
-    const singleProductName = allImages[i].name;
+    const singleProductName = allImages[i].pName;
     productNamesArray.push(singleProductName);
   }
 
@@ -166,7 +166,7 @@ function makeAProductChart(){
 
 
   const ctx = document.getElementById('myChart').getContext('2d');
-  const myChart = new Chart(ctx, {
+  new Chart(ctx, {
     type: 'bar',
     data: {
       //labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
