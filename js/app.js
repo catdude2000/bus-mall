@@ -104,7 +104,7 @@ function handleResultsList(){
   for(let i = 0; i < allImages.length; i++){
     let current = allImages[i];
     let li = document.createElement('li');
-    li.textcontent = current.pName + ' got ' + current.clicks + ' votes.';
+    li.textContent = current.pName + ' got ' + current.clicks + ' votes and was shown ' + current.timesShown + ' times.';
     ul.appendChild(li);
   }
 }
