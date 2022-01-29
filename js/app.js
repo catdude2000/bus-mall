@@ -4,6 +4,7 @@ console.log('js file is connected');
 
 const allImages = [];
 let previouslyPickedProducts = [];
+let oldResultsList = document.getElementById('oldOrders');
 let imageSectionTag = document.getElementById('all_products');
 let rightImgTag = document.getElementById('right_img');
 let centerImgTag = document.getElementById('center_img');
@@ -25,11 +26,35 @@ function Product(pName, imageSrc){
   this.timesShown = 0;
   //need Product below?
   allImages.push(this);
+
+
+
+
+  updateStorage();
+}
+
+
+function updateStorage(){
+  const arrayString = JSON.stringify(allImages);
+  localStorage.setItem('allImagesString', arrayString);
+}
+
+function getOldResults(){
+  const data = localStorage.getItem('allImagesString');
+  const productData = JSON.parse(data);
+  for(let i = 0; i < productData.length; i++){
+    new Product(productData[i].pName, productData[i].imageSrc, productData[i].clicks, productData[i].timesShown);
+  }
+  console.log('newarray', productData);
+  handleResultsList();
 }
 
 
 
+
+
 const handleClick = function(event){
+  // event.preventDefault();
   if (event.target.tagName !== 'IMG') {
     return;
   }
@@ -98,7 +123,6 @@ const handleClick = function(event){
 
 
 
-
 // if(totalClicks >= 25){
 //   localStorage.setItem('savedVotes', JSON.stringify(allImages));
 
@@ -130,11 +154,25 @@ imageSectionTag.addEventListener('click', handleClick);
 
 resultsList.addEventListener('click', handleResultsList);
 chartResults.addEventListener('click', handleChartResults);
+// oldResultsList.addEventListener('click', handleSubmit);
+
+
+function handleSubmit(event){
+  event.preventDefault();
+  const prod = event.target;
+  const pName = prod.pName.value;
+  const imageSrc = prod.imageSrc.value;
+  const clicks = prod.clicks.value;
+  const timesShown = prod.timesShown.value;
+  new Product(pName, imageSrc, clicks, timesShown);
+  handleResultsList();
+
+}
 
 
 
 
-
+// getOldResults();
 
 // let savedVoteString = localStorage.getItem('picks');
 // console.log('object string', savedVoteString);
