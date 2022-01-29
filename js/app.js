@@ -95,6 +95,17 @@ const handleClick = function(event){
   }
 };
 
+
+
+
+
+// if(totalClicks >= 25){
+//   localStorage.setItem('savedVotes', JSON.stringify(allImages));
+
+//   // let ul = document.getElementById('results');
+// }
+
+
 function handleResultsList(){
   console.log('reultswasclicked');
   document.getElementById('results').style.background = 'blue';
@@ -110,10 +121,6 @@ function handleResultsList(){
 }
 
 
-
-
-
-
 function handleChartResults(){
   console.log('chartresultswasclicked');
   makeAProductChart();
@@ -123,6 +130,32 @@ imageSectionTag.addEventListener('click', handleClick);
 
 resultsList.addEventListener('click', handleResultsList);
 chartResults.addEventListener('click', handleChartResults);
+
+
+
+
+
+
+// let savedVoteString = localStorage.getItem('picks');
+// console.log('object string', savedVoteString);
+
+
+// if(savedVoteString){
+//   let arrayOfNotProductObject = JSON.parse(savedVoteString);
+//   console.log('if condition what is our type ', arrayOfNotProductObject);
+//   for(let j = 0; j < arrayOfNotProductObject.length; j++){
+//     new Product(
+//       arrayOfNotProductObject[j].pname,
+//       arrayOfNotProductObject[j].imagesrc,
+//       arrayOfNotProductObject[j].clicks,
+//       arrayOfNotProductObject[j].timesShown
+//     );
+//   }
+// } else {
+
+
+
+
 
 new Product('bag', 'img/bag.jpg', 0, 0);
 new Product('banana', 'img/banana.jpg', 0, 0);
@@ -143,6 +176,16 @@ new Product('tauntaun', 'img/tauntaun.jpg', 0, 0);
 new Product('unicorn', 'img/unicorn.jpg', 0, 0);
 new Product('water-can', 'img/water-can.jpg', 0, 0);
 new Product('wine-glass', 'img/wine-glass.jpg', 0, 0);
+// }
+
+
+
+
+
+
+
+
+
 
 leftProductOnPage = allImages[0];
 centerProductOnPage = allImages[1];
@@ -166,10 +209,10 @@ function makeAProductChart(){
 
 
   const ctx = document.getElementById('myChart').getContext('2d');
+  // eslint-disable-next-line no-undef
   new Chart(ctx, {
     type: 'bar',
     data: {
-      //labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
       labels: productNamesArray,
       datasets: [{
         label: '# of Votes',
