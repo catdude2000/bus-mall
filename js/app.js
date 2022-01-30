@@ -4,7 +4,7 @@ console.log('js file is connected');
 
 const allImages = [];
 let previouslyPickedProducts = [];
-let oldResultsList = document.getElementById('oldOrders');
+let oldResultsList = document.getElementById('oldResultsList');
 let imageSectionTag = document.getElementById('all_products');
 let rightImgTag = document.getElementById('right_img');
 let centerImgTag = document.getElementById('center_img');
@@ -19,6 +19,12 @@ let leftProductOnPage = null;
 let centerProductOnPage = null;
 let rightProductOnPage = null;
 
+function updateStorage(){
+  const arrayString = JSON.stringify(allImages);
+  localStorage.setItem('allImagesString', arrayString);
+}
+
+
 function Product(pName, imageSrc){
   this.pName = pName;
   this.imageSrc = imageSrc;
@@ -30,14 +36,14 @@ function Product(pName, imageSrc){
 
 
 
-  updateStorage();
+  // updateStorage();
 }
 
 
-function updateStorage(){
-  const arrayString = JSON.stringify(allImages);
-  localStorage.setItem('allImagesString', arrayString);
-}
+// function updateStorage(){
+//   const arrayString = JSON.stringify(allImages);
+//   localStorage.setItem('allImagesString', arrayString);
+// }
 
 function getOldResults(){
   const data = localStorage.getItem('allImagesString');
@@ -47,6 +53,7 @@ function getOldResults(){
   }
   console.log('newarray', productData);
   handleResultsList();
+  return productData;
 }
 
 
@@ -101,7 +108,7 @@ const handleClick = function(event){
   );
   tempPickedProducts.push(allImages[centerImg]);
 
-  console.log(leftImg, rightImg);
+  // console.log(leftImg, rightImg);
   leftProductOnPage = allImages[leftImg];
   centerProductOnPage = allImages[centerImg];
   rightProductOnPage = allImages[rightImg];
@@ -116,6 +123,7 @@ const handleClick = function(event){
   previouslyPickedProducts.push(allImages[rightImg]);
 
   if(totalClicks === 25){
+    updateStorage();
     imageSectionTag.removeEventListener('click', handleClick);
   }
 };
@@ -123,16 +131,9 @@ const handleClick = function(event){
 
 
 
-// if(totalClicks >= 25){
-//   localStorage.setItem('savedVotes', JSON.stringify(allImages));
-
-//   // let ul = document.getElementById('results');
-// }
-
-
 function handleResultsList(){
-  console.log('reultswasclicked');
-  document.getElementById('results').style.background = 'blue';
+  console.log('results was clicked');
+  // document.getElementById('results').style.background = 'blue';
 
   let ul = document.getElementById('results');
   ul.innerHTML = '';
@@ -145,6 +146,24 @@ function handleResultsList(){
 }
 
 
+
+// function handleOldResultsList(){
+//   // console.log('reultswasclicked');
+//   // document.getElementById('results').style.background = 'blue';
+
+//   let ul = document.getElementById('oldResultsList');
+//   ul.innerHTML = '';
+//   for(let i = 0; i < productData.length; i++){
+//     let current = allImages[i];
+//     let li = document.createElement('li');
+//     li.textContent = current.pName + ' got ' + current.clicks + ' votes and was shown ' + current.timesShown + ' times.';
+//     ul.appendChild(li);
+//   }
+// }
+
+
+
+
 function handleChartResults(){
   console.log('chartresultswasclicked');
   makeAProductChart();
@@ -154,20 +173,20 @@ imageSectionTag.addEventListener('click', handleClick);
 
 resultsList.addEventListener('click', handleResultsList);
 chartResults.addEventListener('click', handleChartResults);
-// oldResultsList.addEventListener('click', handleSubmit);
+oldResultsList.addEventListener('click', getOldResults);
 
 
-function handleSubmit(event){
-  event.preventDefault();
-  const prod = event.target;
-  const pName = prod.pName.value;
-  const imageSrc = prod.imageSrc.value;
-  const clicks = prod.clicks.value;
-  const timesShown = prod.timesShown.value;
-  new Product(pName, imageSrc, clicks, timesShown);
-  handleResultsList();
+// function handleSubmit(event){
+//   event.preventDefault();
+//   const prod = event.target;
+//   const pName = prod.pName.value;
+//   const imageSrc = prod.imageSrc.value;
+//   const clicks = prod.clicks.value;
+//   const timesShown = prod.timesShown.value;
+//   new Product(pName, imageSrc, clicks, timesShown);
+//   handleResultsList();
 
-}
+// }
 
 
 
