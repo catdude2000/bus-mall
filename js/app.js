@@ -33,7 +33,7 @@ function Product(pName, imageSrc){
   //need Product below?
   allImages.push(this);
 
-  updateStorage();
+  // updateStorage();
 }
 
 let oldArray = [];
@@ -49,13 +49,14 @@ function getOldResults(){
 
   handleOldResultsList();
   // productData.push.prodDataArray;
-console.log('oldarray', oldArray);
+  console.log('oldarray', oldArray);
 
 }
 
 
 function handleOldResultsList(){
   // console.log('reultswasclicked');
+
 
   let ul = document.getElementById('oldResultsList');
   ul.innerHTML = '';
