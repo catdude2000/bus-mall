@@ -33,31 +33,39 @@ function Product(pName, imageSrc){
   //need Product below?
   allImages.push(this);
 
-
-
-
-  // updateStorage();
+  updateStorage();
 }
 
-
-// function updateStorage(){
-//   const arrayString = JSON.stringify(allImages);
-//   localStorage.setItem('allImagesString', arrayString);
-// }
+let oldArray = [];
 
 function getOldResults(){
   const data = localStorage.getItem('allImagesString');
   const productData = JSON.parse(data);
   for(let i = 0; i < productData.length; i++){
-    new Product(productData[i].pName, productData[i].imageSrc, productData[i].clicks, productData[i].timesShown);
+    new Product(productData.pName, productData.imageSrc, productData.clicks, productData.timesShown);
+    oldArray.push(productData[i]);
   }
   console.log('newarray', productData);
-  handleResultsList();
-  return productData;
+
+  handleOldResultsList();
+  // productData.push.prodDataArray;
+console.log('oldarray', oldArray);
+
 }
 
 
+function handleOldResultsList(){
+  // console.log('reultswasclicked');
 
+  let ul = document.getElementById('oldResultsList');
+  ul.innerHTML = '';
+  for(let i = 0; i < oldArray.length; i++){
+    let current = oldArray[i];
+    let li = document.createElement('li');
+    li.textContent = current.pName + ' got ' + current.clicks + ' votes and was shown ' + current.timesShown + ' times.';
+    ul.appendChild(li);
+  }
+}
 
 
 const handleClick = function(event){
@@ -129,8 +137,6 @@ const handleClick = function(event){
 };
 
 
-
-
 function handleResultsList(){
   console.log('results was clicked');
   // document.getElementById('results').style.background = 'blue';
@@ -146,24 +152,6 @@ function handleResultsList(){
 }
 
 
-
-// function handleOldResultsList(){
-//   // console.log('reultswasclicked');
-//   // document.getElementById('results').style.background = 'blue';
-
-//   let ul = document.getElementById('oldResultsList');
-//   ul.innerHTML = '';
-//   for(let i = 0; i < productData.length; i++){
-//     let current = allImages[i];
-//     let li = document.createElement('li');
-//     li.textContent = current.pName + ' got ' + current.clicks + ' votes and was shown ' + current.timesShown + ' times.';
-//     ul.appendChild(li);
-//   }
-// }
-
-
-
-
 function handleChartResults(){
   console.log('chartresultswasclicked');
   makeAProductChart();
@@ -174,44 +162,6 @@ imageSectionTag.addEventListener('click', handleClick);
 resultsList.addEventListener('click', handleResultsList);
 chartResults.addEventListener('click', handleChartResults);
 oldResultsList.addEventListener('click', getOldResults);
-
-
-// function handleSubmit(event){
-//   event.preventDefault();
-//   const prod = event.target;
-//   const pName = prod.pName.value;
-//   const imageSrc = prod.imageSrc.value;
-//   const clicks = prod.clicks.value;
-//   const timesShown = prod.timesShown.value;
-//   new Product(pName, imageSrc, clicks, timesShown);
-//   handleResultsList();
-
-// }
-
-
-
-
-// getOldResults();
-
-// let savedVoteString = localStorage.getItem('picks');
-// console.log('object string', savedVoteString);
-
-
-// if(savedVoteString){
-//   let arrayOfNotProductObject = JSON.parse(savedVoteString);
-//   console.log('if condition what is our type ', arrayOfNotProductObject);
-//   for(let j = 0; j < arrayOfNotProductObject.length; j++){
-//     new Product(
-//       arrayOfNotProductObject[j].pname,
-//       arrayOfNotProductObject[j].imagesrc,
-//       arrayOfNotProductObject[j].clicks,
-//       arrayOfNotProductObject[j].timesShown
-//     );
-//   }
-// } else {
-
-
-
 
 
 new Product('bag', 'img/bag.jpg', 0, 0);
@@ -233,21 +183,11 @@ new Product('tauntaun', 'img/tauntaun.jpg', 0, 0);
 new Product('unicorn', 'img/unicorn.jpg', 0, 0);
 new Product('water-can', 'img/water-can.jpg', 0, 0);
 new Product('wine-glass', 'img/wine-glass.jpg', 0, 0);
-// }
-
-
-
-
-
-
-
-
 
 
 leftProductOnPage = allImages[0];
 centerProductOnPage = allImages[1];
 rightProductOnPage = allImages[2];
-
 
 function makeAProductChart(){
 
@@ -263,7 +203,6 @@ function makeAProductChart(){
     const singleProductClicks = allImages[i].clicks;
     productClicksArray.push(singleProductClicks);
   }
-
 
   const ctx = document.getElementById('myChart').getContext('2d');
   // eslint-disable-next-line no-undef
@@ -304,4 +243,5 @@ function makeAProductChart(){
     }
   });
 }
+
 //how to center images?
