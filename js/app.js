@@ -24,16 +24,12 @@ function updateStorage(){
   localStorage.setItem('allImagesString', arrayString);
 }
 
-
 function Product(pName, imageSrc){
   this.pName = pName;
   this.imageSrc = imageSrc;
   this.clicks = 0;
   this.timesShown = 0;
-  //need Product below?
   allImages.push(this);
-
-  // updateStorage();
 }
 
 let oldArray = [];
@@ -45,18 +41,11 @@ function getOldResults(){
     new Product(productData.pName, productData.imageSrc, productData.clicks, productData.timesShown);
     oldArray.push(productData[i]);
   }
-  console.log('newarray', productData);
-
   handleOldResultsList();
-  // productData.push.prodDataArray;
   console.log('oldarray', oldArray);
-
 }
 
-
 function handleOldResultsList(){
-  // console.log('reultswasclicked');
-
 
   let ul = document.getElementById('oldResultsList');
   ul.innerHTML = '';
@@ -68,9 +57,7 @@ function handleOldResultsList(){
   }
 }
 
-
 const handleClick = function(event){
-  // event.preventDefault();
   if (event.target.tagName !== 'IMG') {
     return;
   }
@@ -117,7 +104,6 @@ const handleClick = function(event){
   );
   tempPickedProducts.push(allImages[centerImg]);
 
-  // console.log(leftImg, rightImg);
   leftProductOnPage = allImages[leftImg];
   centerProductOnPage = allImages[centerImg];
   rightProductOnPage = allImages[rightImg];
@@ -137,11 +123,8 @@ const handleClick = function(event){
   }
 };
 
-
 function handleResultsList(){
   console.log('results was clicked');
-  // document.getElementById('results').style.background = 'blue';
-
   let ul = document.getElementById('results');
   ul.innerHTML = '';
   for(let i = 0; i < allImages.length; i++){
@@ -152,18 +135,15 @@ function handleResultsList(){
   }
 }
 
-
 function handleChartResults(){
   console.log('chartresultswasclicked');
   makeAProductChart();
 }
 
 imageSectionTag.addEventListener('click', handleClick);
-
 resultsList.addEventListener('click', handleResultsList);
 chartResults.addEventListener('click', handleChartResults);
 oldResultsList.addEventListener('click', getOldResults);
-
 
 new Product('bag', 'img/bag.jpg', 0, 0);
 new Product('banana', 'img/banana.jpg', 0, 0);
@@ -184,7 +164,6 @@ new Product('tauntaun', 'img/tauntaun.jpg', 0, 0);
 new Product('unicorn', 'img/unicorn.jpg', 0, 0);
 new Product('water-can', 'img/water-can.jpg', 0, 0);
 new Product('wine-glass', 'img/wine-glass.jpg', 0, 0);
-
 
 leftProductOnPage = allImages[0];
 centerProductOnPage = allImages[1];
