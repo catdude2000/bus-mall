@@ -54,6 +54,7 @@ function handleOldResultsList(){
     let li = document.createElement('li');
     li.textContent = current.pName + ' got ' + current.clicks + ' votes and was shown ' + current.timesShown + ' times.';
     ul.appendChild(li);
+    oldResultsList.removeEventListener('click', getOldResults);
   }
 }
 
