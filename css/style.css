@@ -1,9 +1,5 @@
-
 body {
-    /* display: block; */
-    /* width: auto; */
     margin: 0 auto;
-    /* background-color: rgb(225, 226, 158); */
 }
 header{
     text-align: center;
@@ -51,5 +47,4 @@ h3{
 }
 #resultshtml{
     display: inline;
-    /* margin: 50% auto; */
 }

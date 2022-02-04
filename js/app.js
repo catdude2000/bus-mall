@@ -18,6 +18,7 @@ let centerProductOnPage = null;
 let rightProductOnPage = null;
 let oldArray = [];
 
+//Functions
 function updateStorage() {
   const arrayString = JSON.stringify(allImages);
   localStorage.setItem('allImagesString', arrayString);
@@ -39,9 +40,7 @@ function getOldResults() {
   handleOldResultsList();
   console.log('oldarray', oldArray);
 }
-
 function handleOldResultsList() {
-
   let ul = document.getElementById('oldResultsList');
   ul.innerHTML = '';
   for (let i = 0; i < oldArray.length; i++) {
@@ -52,13 +51,11 @@ function handleOldResultsList() {
     oldResultsList.removeEventListener('click', getOldResults);
   }
 }
-
 const handleClick = function (event) {
   if (event.target.tagName !== 'IMG') {
     return;
   }
   totalClicks++;
-
   if (event.target.id === 'left_img') {
     leftProductOnPage.clicks++;
   }
@@ -71,7 +68,6 @@ const handleClick = function (event) {
   leftProductOnPage.timesShown++;
   centerProductOnPage.timesShown++;
   rightProductOnPage.timesShown++;
-
   const tempPickedProducts = [];
   let leftImg;
   do {
@@ -90,7 +86,6 @@ const handleClick = function (event) {
         tempPickedProducts.includes(allImages[rightImg])
   );
   tempPickedProducts.push(allImages[rightImg]);
-
   let centerImg;
   do {
     centerImg = Math.floor(Math.random() * allImages.length);
@@ -99,26 +94,21 @@ const handleClick = function (event) {
         tempPickedProducts.includes(allImages[centerImg])
   );
   tempPickedProducts.push(allImages[centerImg]);
-
   leftProductOnPage = allImages[leftImg];
   centerProductOnPage = allImages[centerImg];
   rightProductOnPage = allImages[rightImg];
-
   leftImgTag.src = leftProductOnPage.imageSrc;
   centerImgTag.src = centerProductOnPage.imageSrc;
   rightImgTag.src = rightProductOnPage.imageSrc;
-
   previouslyPickedProducts = [];
   previouslyPickedProducts.push(allImages[leftImg]);
   previouslyPickedProducts.push(allImages[centerImg]);
   previouslyPickedProducts.push(allImages[rightImg]);
-
   if (totalClicks === 25) {
     updateStorage();
     imageSectionTag.removeEventListener('click', handleClick);
   }
 };
-
 function handleResultsList() {
   console.log('results was clicked');
   let ul = document.getElementById('results');
@@ -130,12 +120,11 @@ function handleResultsList() {
     ul.appendChild(li);
   }
 }
-
 function handleChartResults() {
   console.log('chartresultswasclicked');
   makeAProductChart();
 }
-
+//Event Listener activation
 imageSectionTag.addEventListener('click', handleClick);
 resultsList.addEventListener('click', handleResultsList);
 chartResults.addEventListener('click', handleChartResults);
@@ -166,10 +155,8 @@ centerProductOnPage = allImages[1];
 rightProductOnPage = allImages[2];
 
 function makeAProductChart() {
-
   const productNamesArray = [];
   const productClicksArray = [];
-
   for (let i = 0; i < allImages.length; i++) {
     const singleProductName = allImages[i].pName;
     productNamesArray.push(singleProductName);
